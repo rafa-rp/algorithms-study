@@ -10,8 +10,13 @@ public class TestaOrdenacao {
                 new Produto("Fusca", 17000)
         };
 
-        selectionSort(produtos, produtos.length);
+        //selectionSort(produtos, produtos.length);
+        insertionSort(produtos, produtos.length);
 
+        imprime(produtos);
+    }
+
+    private static void imprime(Produto[] produtos) {
         for(Produto produto : produtos) {
             System.out.println(produto.getNome() + " custa " + produto.getPreco());
         }
@@ -33,14 +38,33 @@ public class TestaOrdenacao {
             System.out.println("Estou na casinha " + atual);
 
             int menor = buscaMenor(produtos, atual, quantidadeDeElementos - 1);
-            System.out.println("Trocando " + atual + " com o " + menor);
-            Produto produtoAtual = produtos[atual];
-            Produto produtoMenor = produtos[menor];
-
-            System.out.println("Trocando "+ produtoAtual.getNome() + " " + produtoMenor.getNome());
-
-            produtos[atual] = produtoMenor;
-            produtos[menor] = produtoAtual;
+            troca(produtos, atual, menor);
         }
+    }
+
+    private static void insertionSort(Produto[] produtos, int quantidadeDeElementos) {
+        for(int atual = 1; atual < quantidadeDeElementos; atual++) {
+            System.out.println("Estou na casinha " + atual);
+            int analise = atual;
+
+            while(analise > 0 && produtos[analise].getPreco() < produtos[analise - 1].getPreco()) {
+                troca(produtos, analise, analise -1 );
+                analise--;
+            }
+            imprime(produtos);
+            System.out.println();
+            System.out.println();
+
+        }
+    }
+
+    private static void troca(Produto[] produtos, int primeiro, int segundo) {
+        Produto primeiroProduto = produtos[primeiro];
+        Produto segundoProduto = produtos[segundo];
+        System.out.println("Estou trocando " + primeiroProduto.getNome() + " com " + segundoProduto.getNome());
+
+        produtos[primeiro] = segundoProduto;
+        produtos[segundo] = primeiroProduto;
+
     }
 }
