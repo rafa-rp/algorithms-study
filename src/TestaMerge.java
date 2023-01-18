@@ -17,13 +17,13 @@ public class TestaMerge {
                 new Nota("Ana", 10.0)
         };
 
-        Nota[] resultado = junta(notas1, notas2);
+        Nota[] resultado = intercala(notas1, notas2);
         for (Nota nota : resultado) {
             System.out.println(nota.getAluno() + " " + nota.getValor());
         }
     }
 
-    public static Nota[] junta(Nota[] notas1, Nota[] notas2) {
+    public static Nota[] intercala(Nota[] notas1, Nota[] notas2) {
         int tamanho = notas1.length + notas2.length;
         int atual = 0;
         int atual1 = 0;
