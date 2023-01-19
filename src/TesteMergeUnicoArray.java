@@ -21,7 +21,7 @@ public class TesteMergeUnicoArray {
     }
 
     private static Nota[] junta(Nota[] notas, int inicio, int miolo, int termino) {
-        Nota[] resultado = new Nota[notas.length];
+        Nota[] resultado = new Nota[termino - inicio];
         int atual = 0;
         int atual1 = inicio;
         int atual2 = miolo;
@@ -52,6 +52,11 @@ public class TesteMergeUnicoArray {
             atual2++;
             atual++;
         }
-        return resultado;
+
+        for(int contador = 0; contador < atual; contador++) {
+            notas[inicio + contador] = resultado[contador];
+        }
+
+        return notas;
     }
 }
