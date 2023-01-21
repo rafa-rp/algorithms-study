@@ -4,24 +4,36 @@ public class OpcionalOrdenaNomes {
 
          String[] nomes = {
             "Andressa",
+            "Paloma",
             "Camila",
             "Enzo",
-            "Fernando",
+            "Paulo",
             "Maria",
             "Alberto",
+            "Fernando",
             "Jonas",
-            "Junior",
-            "Paloma",
-            "Paulo"
+            "Junior"
         };
 
-         String[] arrayOrdenado = intercalaNomes(nomes,0, 5, nomes.length);
-         for(String nome : arrayOrdenado) {
+         ordenaNomes(nomes, 0, nomes.length);
+         for(String nome : nomes) {
              System.out.println(nome);
          }
     }
 
-    public static String[] intercalaNomes(String[] nomes, int inicio, int miolo, int termino) {
+    private static void ordenaNomes(String[] nomes, int inicio, int termino) {
+
+        int meio = (inicio + termino) / 2;
+        int quantidade = termino - inicio;
+        if(quantidade > 1) {
+            ordenaNomes(nomes, inicio, meio);
+            ordenaNomes(nomes, meio, termino);
+            intercalaNomes(nomes, inicio, meio, termino);
+        }
+
+    }
+
+    public static void intercalaNomes(String[] nomes, int inicio, int miolo, int termino) {
 
         String[] resultado = new String[termino - inicio];
         int atual = 0;
@@ -58,7 +70,5 @@ public class OpcionalOrdenaNomes {
         for(int contador = 0; contador < atual; contador++) {
             nomes[inicio + contador] = resultado[contador];
         }
-
-        return nomes;
     }
 }
