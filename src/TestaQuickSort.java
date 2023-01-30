@@ -22,7 +22,7 @@ public class TestaQuickSort {
         }
     }
 
-    private static void quickSort(Nota[] notas, int de, int ate) {
+    public static void quickSort(Nota[] notas, int de, int ate) {
         int qtdElementos = ate - de;
 
         if(qtdElementos > 1){
